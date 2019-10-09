@@ -14,7 +14,9 @@ private:
   int _priceCode;
 
 public:
-  Movie(std::string &title, const int priceCode){
+  Movie() {};
+
+  Movie(std::string title, const int priceCode){
     _title = title;
     _priceCode = priceCode;
   }
