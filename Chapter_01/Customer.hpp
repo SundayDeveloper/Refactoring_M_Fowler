@@ -13,7 +13,7 @@ private:
 
 public:
   Customer() {};
-  Customer(const std::string &name){ _name = name; }
+  Customer(const std::string name){ _name = name; }
 
   inline void addRental(const Rental &arg) { _rentals.push_back(arg); }
   inline std::string getName() { return _name; }
@@ -48,26 +48,26 @@ public:
   }
 
 private:
-  double amountFor(const Rental &rental)
+  double amountFor(const Rental &aRental)
   {
     auto thisAmount = 0.0;
-    switch(rental.getMovie().getPriceCode() ) {
+    switch(aRental.getMovie().getPriceCode() ) {
         
       case Movie::REGULAR :
         thisAmount += 2.0;
-        if( rental.getDaysRented() > 2){
-            thisAmount += (rental.getDaysRented() - 2 ) * 1.5;
+        if( aRental.getDaysRented() > 2){
+            thisAmount += (aRental.getDaysRented() - 2 ) * 1.5;
           }
           break;
 
         case Movie::NEW_RELEASE :
-          thisAmount += rental.getDaysRented() * 3.0;
+          thisAmount += aRental.getDaysRented() * 3.0;
           break;
 
         case Movie::CHILDREN:
           thisAmount += 1.5;
-          if( rental.getDaysRented() > 3){
-            thisAmount += (rental.getDaysRented() - 3 ) * 1.5;
+          if( aRental.getDaysRented() > 3){
+            thisAmount += (aRental.getDaysRented() - 3 ) * 1.5;
           }
           break;
       }
