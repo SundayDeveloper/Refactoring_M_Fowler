@@ -10,6 +10,7 @@ private:
 
 public:
 
+  Rental() {};
   Rental (const Movie &movie, const int daysRented) :
    _movie(movie), _daysRented(daysRented) { }
 
