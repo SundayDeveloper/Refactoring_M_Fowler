@@ -19,10 +19,9 @@ public:
     _priceCode = priceCode;
   }
 
-public:
-  inline int getPriceCode() { return _priceCode; }
-  inline void setPriceCode(const int arg) { _priceCode = arg; }
+  inline int getPriceCode() const  { return _priceCode; };
+  inline void setPriceCode(const int arg) { _priceCode = arg; } 
 
-  std::string getTitle() { return _title; }
+  std::string getTitle() const { return _title; }
 
 };

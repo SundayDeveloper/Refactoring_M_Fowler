@@ -10,13 +10,11 @@ private:
 
 public:
 
-  Rental(const Movie &movie, const int daysRented){
-    _movie = movie;
-    _daysRented = daysRented;    
-  }
+  Rental (const Movie &movie, const int daysRented) :
+   _movie(movie), _daysRented(daysRented) { }
 
-  inline int getDaysRented(){ return _daysRented; }
+  inline int getDaysRented() const { return _daysRented; }
 
-  inline Movie getMovie(){ return _movie; }
- }
+  inline Movie getMovie() const { return _movie; }
+};
 
