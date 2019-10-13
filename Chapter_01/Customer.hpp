@@ -28,15 +28,11 @@ public:
 
     for( const auto &rental : _rentals){
 
-      auto thisAmount = amountFor(rental);
-      frequentRenterPoints++;
+      frequentRenterPoints = rental.getFrequentRenterPoints();
 
-      if( (rental.getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
-           rental.getDaysRented() > 1 ) { frequentRenterPoints++; }
-          
       result += "\t" + rental.getMovie().getTitle() + "\t" +
-                std::to_string(thisAmount)  + "\n";
-      totalAmount += thisAmount;
+                std::to_string(rental.getCharge())  + "\n";
+      totalAmount += rental.getCharge();
     }
 
     result += "Amount owed is " + std::to_string(totalAmount) + "\n";
@@ -47,32 +43,5 @@ public:
 
   }
 
-private:
-  double amountFor(const Rental &aRental)
-  {
-    auto thisAmount = 0.0;
-    switch(aRental.getMovie().getPriceCode() ) {
-        
-      case Movie::REGULAR :
-        thisAmount += 2.0;
-        if( aRental.getDaysRented() > 2){
-            thisAmount += (aRental.getDaysRented() - 2 ) * 1.5;
-          }
-          break;
 
-        case Movie::NEW_RELEASE :
-          thisAmount += aRental.getDaysRented() * 3.0;
-          break;
-
-        case Movie::CHILDREN:
-          thisAmount += 1.5;
-          if( aRental.getDaysRented() > 3){
-            thisAmount += (aRental.getDaysRented() - 3 ) * 1.5;
-          }
-          break;
-      }
-
-    return thisAmount;
-
-  }
 };
