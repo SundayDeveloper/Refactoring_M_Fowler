@@ -30,8 +30,10 @@ public:
 
       frequentRenterPoints = rental.getFrequentRenterPoints();
 
-      result += "\t" + rental.getMovie().getTitle() + "\t" +
-                std::to_string(rental.getCharge())  + "\n";
+      result += "\t" + rental.getMovie().getTitle() +
+              + "\t" + std::to_string(rental.getCharge())  + 
+              "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
+              "\n";
       totalAmount += rental.getCharge();
     }
 
