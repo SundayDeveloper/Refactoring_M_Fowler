@@ -28,27 +28,32 @@ public:
     return result;
   }
 
+  int getTotalFrequentRenterPoints()
+  {
+    auto result = 0;
+    
+    for( const auto &rental : _rentals){
+      result += rental.getFrequentRenterPoints();      
+    }
+
+    return result;
+  }
+
   std::string statement()
   {
-    
-    auto totalAmount  = 0.0;
-    auto frequentRenterPoints = 0;
-    
+        
     std::string result = "Rental Record for " + getName() + '\n';
 
     for( const auto &rental : _rentals){
-
-      frequentRenterPoints = rental.getFrequentRenterPoints();
-
       result += "\t" + rental.getMovie().getTitle() +
               + "\t" + std::to_string(rental.getCharge())  + 
               "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
               "\n";
-      totalAmount += rental.getCharge();
+      
     }
 
     result += "Amount owed is " + std::to_string( getTotalCharge() ) + "\n";
-    result += "You earned " + std::to_string(frequentRenterPoints) +
+    result += "You earned " + std::to_string( getTotalFrequentRenterPoints() ) +
               " frequent renter porints";
 
     return result;
