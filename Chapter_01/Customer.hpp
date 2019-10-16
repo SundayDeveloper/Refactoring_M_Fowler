@@ -17,7 +17,17 @@ public:
 
   inline void addRental(const Rental &arg) { _rentals.push_back(arg); }
   inline std::string getName() { return _name; }
-  
+
+  double getTotalCharge() const  {
+
+    auto result  = 0.0;
+    for( const auto &rental : _rentals){
+      result += rental.getCharge();
+    }
+
+    return result;
+  }
+
   std::string statement()
   {
     
@@ -37,7 +47,7 @@ public:
       totalAmount += rental.getCharge();
     }
 
-    result += "Amount owed is " + std::to_string(totalAmount) + "\n";
+    result += "Amount owed is " + std::to_string( getTotalCharge() ) + "\n";
     result += "You earned " + std::to_string(frequentRenterPoints) +
               " frequent renter porints";
 
