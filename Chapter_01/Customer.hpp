@@ -53,11 +53,25 @@ public:
     }
 
     result += "Amount owed is " + std::to_string( getTotalCharge() ) + "\n";
-    result += "You earned " + std::to_string( getTotalFrequentRenterPoints() ) +
+    result += "You earned "     + std::to_string( getTotalFrequentRenterPoints() ) +
               " frequent renter porints";
 
     return result;
 
+  }
+
+  std::string HtmlStatements()
+  {
+    std::string result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
+    for(const auto &rental : _rentals){
+      result += rental.getMovie().getTitle() + ": " +
+                std::to_string(rental.getCharge())  + 
+              "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
+              "<BR>\n";
+
+    }
+    
+    return result;
   }
 
 
