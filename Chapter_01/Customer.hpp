@@ -46,9 +46,9 @@ public:
 
     for( const auto &rental : _rentals){
       result += "\t" + rental.getMovie().getTitle() +
-              + "\t" + std::to_string(rental.getCharge())  + 
-              "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
-              "\n";
+                "\t" + std::to_string(rental.getCharge() )  + 
+                "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
+                "\n";
       
     }
 
@@ -66,8 +66,8 @@ public:
     for(const auto &rental : _rentals){
       result += rental.getMovie().getTitle() + ": " +
                 std::to_string(rental.getCharge())  + 
-              "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
-              "<BR>\n";
+                "(" + std::to_string( rental.getDaysRented() ) + " days)" + 
+                "<BR>\n";
 
     }
     
