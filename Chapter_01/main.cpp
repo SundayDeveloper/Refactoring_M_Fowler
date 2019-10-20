@@ -13,7 +13,6 @@ int main()
   Rental rental2(movie2, 3);
   customer.addRental(rental2);
 
-  //std::cout << customer.statement();
   std::cout << customer.HtmlStatements();
   std::cout.flush();
 
