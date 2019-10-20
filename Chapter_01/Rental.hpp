@@ -18,8 +18,12 @@ public:
 
   inline Movie getMovie() const { return _movie; }
 
+
   double getCharge() const
   {
+    #if 1
+    return _movie.getCharge(_daysRented);
+    #else
     auto thisAmount = 0.0;
     switch(getMovie().getPriceCode() ) {
         
@@ -43,7 +47,7 @@ public:
       }
 
     return thisAmount;
-
+#endif
   }
 
   int getFrequentRenterPoints() const
