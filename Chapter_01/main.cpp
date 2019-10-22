@@ -1,4 +1,6 @@
 #include "Customer.hpp"
+//#include "Price.hpp"
+
 #include <iostream>
 
 int main()
@@ -9,7 +11,7 @@ int main()
   Rental rental1(movie1, 5);
   customer.addRental(rental1);
 
-  Movie movie2("Nichijo", Movie::CHILDREN);
+  Movie movie2("Nichijo", Movie::CHILDRENS);
   Rental rental2(movie2, 3);
   customer.addRental(rental2);
 

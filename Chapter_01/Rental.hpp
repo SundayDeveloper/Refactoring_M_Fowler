@@ -24,17 +24,9 @@ public:
     return _movie.getCharge(_daysRented);
   }
 
-  int getFrequentRenterPoints() const
+  int getFrequentRenterPoints() const 
   {
-      auto frequentRenterPoints = 1;
-  
-      if( (getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
-           getDaysRented() > 1 )
-      {
-        frequentRenterPoints++; 
-      }
-
-      return frequentRenterPoints;
-
+    return _movie.getFrequentRenterPoints(_daysRented);
   }
+
 };

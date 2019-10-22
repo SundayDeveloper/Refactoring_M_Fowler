@@ -5,7 +5,7 @@
 class Movie {
   
 public:
-  static const int CHILDREN = 2;
+  static const int CHILDRENS = 2;
   static const int REGULAR = 0;
   static const int NEW_RELEASE = 1;
 
@@ -43,7 +43,7 @@ public:
           thisAmount += daysRented * 3.0;
           break;
 
-        case Movie::CHILDREN:
+        case Movie::CHILDRENS:
           thisAmount += 1.5;
           if( daysRented > 3){
             thisAmount += ( daysRented - 3 ) * 1.5;
@@ -53,6 +53,19 @@ public:
 
     return thisAmount;
 
+  }
+
+  int getFrequentRenterPoints(const int daysRented) const
+  {
+      auto frequentRenterPoints = 1;
+  
+      if( (getPriceCode() == Movie::NEW_RELEASE) &&
+           daysRented > 1 )
+      {
+        frequentRenterPoints++; 
+      }
+
+      return frequentRenterPoints;
   }
 
 
