@@ -17,14 +17,15 @@ public:
   Movie() {};
 
   Movie(std::string title, const int priceCode){
-    _title = title;
-    _priceCode = priceCode;
+    setTitle(title);
+    setPriceCode(priceCode);
   }
 
   inline int getPriceCode() const  { return _priceCode; };
   inline void setPriceCode(const int arg) { _priceCode = arg; } 
 
-  std::string getTitle() const { return _title; }
+  inline void setTitle(const std::string title) { _title = title; }
+  inline std::string getTitle() const { return _title; }
 
   double getCharge(const int daysRented) const
   {
