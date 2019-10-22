@@ -1,28 +1,30 @@
 #pragma once
 
 #include <string>
+#include "Price.hpp"
 
 class Movie {
   
 public:
-  static const int CHILDRENS = 2;
-  static const int REGULAR = 0;
-  static const int NEW_RELEASE = 1;
+  //static const int CHILDRENS = 2;
+  //static const int REGULAR = 0;
+  //static const int NEW_RELEASE = 1;
 
 private:
   std::string _title;
-  int _priceCode;
+  //int _priceCode;
+  Price::Code _priceCode;
 
 public:
   Movie() {};
 
-  Movie(std::string title, const int priceCode){
+  Movie(std::string title, const Price::Code priceCode){
     setTitle(title);
     setPriceCode(priceCode);
   }
 
-  inline int getPriceCode() const  { return _priceCode; };
-  inline void setPriceCode(const int arg) { _priceCode = arg; } 
+  inline Price::Code getPriceCode() const  { return _priceCode; };
+  inline void setPriceCode(const Price::Code arg) { _priceCode = arg; } 
 
   inline void setTitle(const std::string title) { _title = title; }
   inline std::string getTitle() const { return _title; }
@@ -32,18 +34,18 @@ public:
     auto thisAmount = 0.0;
     switch( getPriceCode() ) {
         
-      case Movie::REGULAR :
+      case Price::Code::REGULAR :
         thisAmount += 2.0;
         if( daysRented > 2){
             thisAmount += ( daysRented - 2 ) * 1.5;
           }
           break;
 
-        case Movie::NEW_RELEASE :
+        case Price::Code::NEW_RELEASE :
           thisAmount += daysRented * 3.0;
           break;
 
-        case Movie::CHILDRENS:
+        case Price::Code::CHILDRENS:
           thisAmount += 1.5;
           if( daysRented > 3){
             thisAmount += ( daysRented - 3 ) * 1.5;
@@ -59,7 +61,7 @@ public:
   {
       auto frequentRenterPoints = 1;
   
-      if( (getPriceCode() == Movie::NEW_RELEASE) &&
+      if( (getPriceCode() == Price::Code::NEW_RELEASE) &&
            daysRented > 1 )
       {
         frequentRenterPoints++; 
