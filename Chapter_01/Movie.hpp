@@ -3,17 +3,12 @@
 #include <string>
 #include "Price.hpp"
 
-class Movie {
+class Movie { 
   
-public:
-  //static const int CHILDRENS = 2;
-  //static const int REGULAR = 0;
-  //static const int NEW_RELEASE = 1;
-
-private:
+protected:
   std::string _title;
-  //int _priceCode;
   Price::Code _priceCode;
+  Price *_price = nullptr;
 
 public:
   Movie() {};
@@ -23,11 +18,31 @@ public:
     setPriceCode(priceCode);
   }
 
-  inline Price::Code getPriceCode() const  { return _priceCode; };
-  inline void setPriceCode(const Price::Code arg) { _priceCode = arg; } 
+  ~Movie()
+  {
+    if(_price != nullptr){ delete _price;}
+  }
 
-  inline void setTitle(const std::string title) { _title = title; }
+protected:
+  void setPriceCode(const Price::Code arg)  
+  {
+    switch (arg) {
+      case Price::Code::REGULAR :
+        /* code */
+        break;
+    
+      default:
+        break;
+    }
+  }
+
+public:
   inline std::string getTitle() const { return _title; }
+
+protected:
+  inline void setTitle(const std::string title){ _title = title; }
+public:
+  Price::Code getPriceCode() const  { return _price->getPriceCode(); };
 
   double getCharge(const int daysRented) const
   {

@@ -2,24 +2,34 @@
 
 class Price {
   
-  public:
-    enum Code { REGULAR, NEW_RELEASE, CHILDRENS };
-    virtual Code getPriceCode() const = 0;
+public:
+  enum class Code { REGULAR, NEW_RELEASE, CHILDRENS };
+	virtual Code getPriceCode() const = 0;
+	
+	Price(){};
+	virtual ~Price() = 0;
 };
 
 class RegularPrice : public Price {
-  public:
-    Code getPriceCode() const { return REGULAR; }
-
+public:
+	RegularPrice(){};
+	~RegularPrice(){};
+	
+	Code getPriceCode() const { return Code::REGULAR; }
+	
 };
 
-class NreReleasePrice : public Price {
-  public:
-    Code getPriceCode() const { return NEW_RELEASE; }
-
+class NewReleasePrice : public Price {
+public:
+	NewReleasePrice(){};
+  ~NewReleasePrice(){};
+	Code getPriceCode() const { return Code::NEW_RELEASE; }
+	
 };
 
 class ChildrensPrice : public Price {
-  public:
-    Code getPriceCode() const { return CHILDRENS; }
+public:
+  ChildrensPrice(){};
+  ~ChildrensPrice(){};
+	Code getPriceCode() const { return Code::CHILDRENS; }
 };
