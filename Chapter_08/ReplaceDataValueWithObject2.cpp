@@ -23,16 +23,16 @@ private:
   Customer customer;
 public:
   Order() {}
-  Order(const string &customer_) { customer = Customer(customer_); }
-  string Get_Customer() const { return customer.Get_Name(); }
-  void Set_Customer(const string &customer_) { cu stomer = Customer(customer_); }
+  Order(const string &customer_name) { customer = Customer(customer_name); }
+  string Get_CustomerName() const { return customer.Get_Name(); }
+  void Set_Customer(const string &customer_name) { customer = Customer(customer_name); }
 };
 
 int Get_NumberOfOrdersFor(const vector<Order> &orders, const string &customer)
 {
   auto result = 0;
   for(auto &ord : orders){
-    if(!ord.Get_Customer().compare(customer)){
+    if(!ord.Get_CustomerName().compare(customer)){
       ++result;
     }
   }
