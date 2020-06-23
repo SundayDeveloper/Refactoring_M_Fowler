@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if test $# -ne 1
+then echo Usage: `basename $0`; exit
+fi
+
+g++ $1 -g -O0
+./a.out
